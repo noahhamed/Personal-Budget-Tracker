@@ -23,6 +23,12 @@ transactions: list[Transaction] = load_transactions()
 @app.route("/")
 def index():
     month = request.args.get("month") or datetime.now().strftime("%Y-%m")
+    available_months = sorted({t.date[:7] for t in transactions}, reverse=True)
+
+    # If user typed a month that doesn't exist, default to newest available month
+    if available_months and month not in available_months:
+        month = available_months[0]
+
     txns = [t for t in transactions if t.date[:7] == month]
     txns.sort(key=lambda t: t.date, reverse=True)
 
@@ -38,6 +44,7 @@ def index():
         income=income,
         expense=expense,
         net=net,
+        available_months=available_months,
         breakdown=breakdown,
         recent=recent,
         txns=txns
