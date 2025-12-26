@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0">Summary ({{ month }})</h4>
+
+  <form method="get" class="d-flex gap-2">
+    <input name="month" class="form-control" value="{{ month }}" placeholder="YYYY-MM">
+    <button class="btn btn-outline-dark">Go</button>
+  </form>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="text-muted">Income</div>
+        <div class="fs-4">${{ '%.2f'|format(income/100) }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="text-muted">Expense</div>
+        <div class="fs-4">${{ '%.2f'|format(expense/100) }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="text-muted">Net</div>
+        <div class="fs-4">${{ '%.2f'|format(net/100) }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Category Breakdown</h5>
+
+        {% if breakdown %}
+          <ul class="list-group">
+            {% for cat, cents in breakdown.items() %}
+              <li class="list-group-item d-flex justify-content-between">
+                <span>{{ cat }}</span>
+                <span>${{ '%.2f'|format(cents/100) }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="text-muted">No data for this month yet.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Recent Expenses</h5>
+
+        {% if recent %}
+          <ul class="list-group">
+            {% for t in recent %}
+              <li class="list-group-item d-flex justify-content-between">
+                <span>{{ t.category }} ({{ t.date }})</span>
+                <span>${{ '%.2f'|format(t.amount_cents/100) }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="text-muted">No expenses yet.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
