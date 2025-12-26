@@ -3,19 +3,19 @@
 A beginner-friendly Python project that records expenses, calculates monthly totals, and generates category-based summaries. Includes unit tests using pytest.
 
 ## Features
-- Record expenses with date, category, and amount
-- Calculate monthly expense totals and net balance
-- Generate category breakdowns for a selected month
-- Input validation for dates, categories, and amounts
-- Unit tests using pytest
-- Web interface built with Flask, HTML, CSS, and Bootstrap
+- Web-based personal budget tracker with a simple user interface
+- Record income and expenses with input validation
+- View monthly summaries, net balance, and category breakdowns
+- Persist data locally using JSON storage
+- Delete transactions and reset stored data
 
 
 ## Tech Stack
 - Python
+- Flask
+- HTML, CSS, Bootstrap
 - pytest
-- Git
-- GitHub
+- Git & GitHub
 
 
 ## Screenshots
@@ -25,5 +25,17 @@ A beginner-friendly Python project that records expenses, calculates monthly tot
 
 
 ## How to Run
-```bash
-python main.py
+Requirements
+
+Python 3.10 or newer
+
+Steps:
+
+-Clone the repository and navigate into the project folder.
+
+-Install Flask using pip.
+
+-Run the application by executing app.py.
+
+-After the server starts, open the application in your web browser using the local address printed in the terminal.
+
