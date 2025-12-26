@@ -8,6 +8,8 @@ A beginner-friendly Python project that records expenses, calculates monthly tot
 - Generate category breakdowns for a selected month
 - Input validation for dates, categories, and amounts
 - Unit tests using pytest
+- Web interface built with Flask, HTML, CSS, and Bootstrap
+
 
 ## Tech Stack
 - Python
