@@ -71,7 +71,10 @@
             {% for t in recent %}
               <li class="list-group-item d-flex justify-content-between">
                 <span>{{ t.category }} ({{ t.date }})</span>
-                <span>${{ '%.2f'|format(t.amount_cents/100) }}</span>
+                <span class="{% if t.ttype == 'income' %}text-success{% else %}text-danger{% endif %}">
+                    {% if t.ttype == 'income' %}+{% else %}-{% endif %}${{ '%.2f'|format(t.amount_cents/100) }}
+                </span>
+
               </li>
             {% endfor %}
           </ul>

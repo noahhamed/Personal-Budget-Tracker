@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime
 
 # keep your current file name (capital B)
-from Budget import add_expense, monthly_totals, category_breakdown, Transaction
+from budget import add_transaction, monthly_totals, category_breakdown, Transaction
 
 app = Flask(__name__)
 app.secret_key = "dev"  # ok for a student project
@@ -38,16 +38,17 @@ def add():
         date = request.form.get("date", "")
         category = request.form.get("category", "")
         amount = request.form.get("amount", "")
+        ttype = request.form.get("type", "expense")
 
         try:
-            add_expense(transactions, date, category, amount)
+            add_transaction(transactions, date, category, amount, ttype)
+
             flash("Expense added!", "success")
             return redirect(url_for("index"))
         except Exception as e:
             flash(str(e), "danger")
 
     return render_template("add.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)

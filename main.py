@@ -1,4 +1,4 @@
-from Budget import add_expense, monthly_totals, category_breakdown, Transaction
+from budget import add_expense, monthly_totals, category_breakdown, Transaction
 
 transactions: list[Transaction] = []
 

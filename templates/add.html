@@ -3,20 +3,29 @@
 
 <div class="card shadow-sm">
   <div class="card-body">
-    <h5 class="card-title mb-3">Add Expense</h5>
+    <h5 class="card-title mb-3">Add Transaction</h5>
 
     <form method="post" class="row g-3">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label class="form-label">Date</label>
         <input type="date" name="date" class="form-control" required>
       </div>
 
-      <div class="col-md-4">
-        <label class="form-label">Category</label>
-        <input name="category" class="form-control" placeholder="Food, Rent, Transport..." required>
+      <div class="col-md-3">
+        <label class="form-label">Type</label>
+        <select id="typeSelect" name="type" class="form-select" required>
+          <option value="expense" selected>Expense</option>
+          <option value="income">Income</option>
+        </select>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
+        <label class="form-label">Label</label>
+        <input id="labelInput" name="category" class="form-control"
+               placeholder="Food, Rent, Transport..." required>
+      </div>
+
+      <div class="col-md-3">
         <label class="form-label">Amount</label>
         <input name="amount" class="form-control" placeholder="12.50" required>
       </div>
@@ -28,5 +37,21 @@
     </form>
   </div>
 </div>
+
+<script>
+  const typeSelect = document.getElementById("typeSelect");
+  const labelInput = document.getElementById("labelInput");
+
+  function updatePlaceholder() {
+    if (typeSelect.value === "income") {
+      labelInput.placeholder = "Paycheck, Gift, Refund...";
+    } else {
+      labelInput.placeholder = "Food, Rent, Transport...";
+    }
+  }
+
+  typeSelect.addEventListener("change", updatePlaceholder);
+  updatePlaceholder();
+</script>
 
 {% endblock %}
