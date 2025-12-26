@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+<form method="post" action="{{ url_for('reset') }}" onsubmit="return confirm('Reset all data?');">
+  <button class="btn btn-outline-danger">Reset Data</button>
+</form>
+
 
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h4 class="mb-0">Summary ({{ month }})</h4>
@@ -85,5 +89,99 @@
     </div>
   </div>
 </div>
+<div class="card shadow-sm mt-3">
+  <div class="card-body">
+    <h5 class="card-title">Transaction History ({{ month }})</h5>
+
+    {% set month_tx = recent if false else none %}
+
+    {% set filtered = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {% set month_tx = [] %}
+    {% for t in recent %}{% endfor %}
+
+    {# We'll use `transactions` filtered in app.py instead (see next box). #}
+
+    {% if txns %}
+      <div class="table-responsive">
+        <table class="table table-sm align-middle">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Label</th>
+              <th class="text-end">Amount</th>
+              <th class="text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in txns %}
+              <tr>
+                <td>{{ t.date }}</td>
+                <td>{{ t.ttype }}</td>
+                <td>{{ t.category }}</td>
+                <td class="text-end">
+                  <span class="{% if t.ttype == 'income' %}text-success{% else %}text-danger{% endif %}">
+                    {% if t.ttype == 'income' %}+{% else %}-{% endif %}${{ '%.2f'|format(t.amount_cents/100) }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <form method="post"
+                        action="{{ url_for('delete', tid=t.tid, month=month) }}"
+                        onsubmit="return confirm('Delete this transaction?');">
+                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="text-muted">No transactions for this month yet.</div>
+    {% endif %}
+  </div>
+</div>
+
 
 {% endblock %}
