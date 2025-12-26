@@ -19,7 +19,11 @@ A beginner-friendly Python project that records expenses, calculates monthly tot
 
 
 ## Screenshots
-<img width="1385" height="647" alt="image" src="https://github.com/user-attachments/assets/16a3c46a-d05b-43cd-b812-c6fc736694b4" />
+<img width="1328" height="976" alt="image" src="https://github.com/user-attachments/assets/6a25bd63-1ac2-4e74-ab18-3f511955dbf9" />
+<img width="1337" height="836" alt="image" src="https://github.com/user-attachments/assets/007b5cef-a2d8-4bcd-81d5-d6252c5ee597" />
+
+
+
 
 
 
