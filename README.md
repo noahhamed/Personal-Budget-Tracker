@@ -1,6 +1,6 @@
 # Personal Budget Tracker
 
-A beginner-friendly Python project that records expenses, calculates monthly totals, and generates category-based summaries. Includes unit tests using pytest.
+A personal Python project that records expenses, calculates monthly totals, and generates category-based summaries. Includes unit tests using pytest.
 
 ## Features
 - Web-based personal budget tracker with a simple user interface
